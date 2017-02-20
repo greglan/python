@@ -2,12 +2,61 @@
 # !/usr/bin/env python
 
 
+import queue
 
 ## Shortest paths
 # Floyd Warshall: distances to self is wrong (2 or 4?)
+# Add comments
 
 ## Unweighted graphs
+def distancesFrom(g, s):
+    """ 
+        Returns the list of distances using a bfs.
+    
+        Input:
+            Graph as an adjacency list
+    """
+    
+    V = []                                                                      # List of visited vertices
+    D = [0 for k in range(len(g))]                                              # Distances
+    Q = queue.Queue()
+    Q.put((s,0))
+    
+    while not Q.empty():
+        u, d = Q.get()
+        
+        if u not in V:
+            V += [u]
+            for v in g[u]:
+                Q.put( (v,d+1) )
+            D[u] = d
+    return D
 
+def pathFrom(g, s):
+    """
+        Returns the path to go to a vertex using a bfs
+        
+        Input:
+            Graph as an adjacency list
+        
+        Returns:
+            List l such as l[i] is the list of vertices to use to go to i from s
+    """
+    
+    V = []                                                                      # List of visited vertices
+    P = [None for k in range(len(g))]                                           # List of paths
+    Q = queue.Queue()
+    Q.put((s,[]))
+    
+    while not Q.empty():
+        u, p = Q.get()
+        
+        if u not in V:
+            V += [u]
+            for v in g[u]:
+                Q.put( (v,p+[u]) )
+            P[u] = p+[u]
+    return P
 
 ## Weighted graphs: dijkstra
 ## Weighted graphs: Floyd Warshall
