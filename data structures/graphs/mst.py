@@ -1,18 +1,17 @@
 # -*- coding: utf-8 -*-
 # !/usr/bin/env python
 
+import operator
 
-
-## Minimum spanning tree
-##
-from graph_implementations import *
-
-
-
+## Minimum/maximum spanning tree
+# TODO: Check functions
+# TODO: adjList to edges func
+# TODO: Add option to get the minimum or the maximum spanning tree.
 
 ## Prim's algorithm
 def prim(g):
-    """ Return the mst using Prim's algorithm """
+    """ Return the minimum spanning tree using Prim's algorithm """
+    # TODO: Check
     global infinity
     
     order = len(g.getOrder())
@@ -55,3 +54,24 @@ def prim(g):
     
     # Return the tree
     return F
+
+## Krushkal's algorithm
+def krushkal(g):
+    """
+        Input: a list of edges (v1,v2,w)
+        Returns:
+            A list of edges
+    """
+            
+    def sameConnectedComponent():
+        # TODO
+        pass
+    
+    T = []                                                                      # MST: list of edges
+    edges = g.sort(key=operator.itemgetter(2))                                  # Sort according to weight (index 2)
+    
+    for (u,v,w) in edges:
+        if not sameConnectedComponent(u, v):
+            A += [(u,v)]
+    
+    return A

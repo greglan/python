@@ -59,7 +59,7 @@ def dfsImp_l(g, s):
     """
     V = []                                                                      # List of visited vertices
     Q = []
-    Q.append(s)                                                       # Stack
+    Q.append(s)                                                                 # Stack
     
     while not Q == []:
         v = Q.pop()

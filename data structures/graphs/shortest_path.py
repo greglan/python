@@ -5,9 +5,13 @@
 
 ## Shortest paths
 # Floyd Warshall: distances to self is wrong (2 or 4?)
-##
-from graph_implementations import *
 
+## Unweighted graphs
+
+
+## Weighted graphs: dijkstra
+## Weighted graphs: Floyd Warshall
+## Waighted graphs: A star
 def listPaths_uul(g, sourceNode):
     """ 
     Returns the list of the shortest path from sourceNode to all ather accessible nodes in g.
@@ -112,7 +116,3 @@ def floydWarshall(g):
 
 
 ## Tests
-
-def test_dijkstra_fw(g, source):
-    print(dijkstra(g, source)[1])
-    print(floydWarshall(g)[1])
