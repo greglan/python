@@ -15,6 +15,9 @@ def distancesFrom(g, s):
     
         Input:
             Graph as an adjacency list
+        
+        Returns:
+            A list l such as l[i] is the distance from s to i
     """
     
     V = []                                                                      # List of visited vertices
@@ -58,43 +61,16 @@ def pathFrom(g, s):
             P[u] = p+[u]
     return P
 
-## Weighted graphs: dijkstra
+## Weighted graphs: Bellman-Ford
+def bellmanFord(g, s):
+    n = len(g)
+    
+    for i in range(n):
+        
+
+## Weighted graphs: Dijkstra
 ## Weighted graphs: Floyd Warshall
 ## Waighted graphs: A star
-def listPaths_uul(g, sourceNode):
-    """ 
-    Returns the list of the shortest path from sourceNode to all ather accessible nodes in g.
-    Breadth First Search used.
-    
-    Arguments: 
-        arg1: an unweighted graph implemented by adjacency list. 
-        arg2: sourceNode. 
-    
-    Returns:
-        List
-    
-    Todo:
-        Comment variable use
-        Comment
-    """
-    
-    q = Queue()
-    paths = [[] for k in range(g.getOrder())]
-    
-    q.put((sourceNode,[]))
-
-    while not q.empty():
-        (current_vertice, path) = q.get()
-
-        if paths[current_vertice] == []:
-            path = path + [current_vertice]
-            paths[current_vertice] = path
-            for neighbor in g.getNeighbors(current_vertice):
-                q.put((neighbor, path))
-    return paths
-
-
-
 def dijkstra(g, source):
     """
     Returns the list of distances and the list of paths
