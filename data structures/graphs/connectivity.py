@@ -2,6 +2,7 @@
 # !/usr/bin/env python
 
 ## Connectivity
+# TODO: https://fr.wikipedia.org/wiki/Algorithmes_de_connexit%C3%A9_bas%C3%A9s_sur_des_pointeurs
 # TODO: calcul de composantes connexes
 # TODO: tests de connexité
 
@@ -10,6 +11,10 @@ def connectivityTest(g):
     """
         Input: A graph as an adjacency list
         Uses an imperative dfs
+        
+        Args:
+            g: adjacency list of an unweighted graph
+            
         Returns:
             Boolean
     """
@@ -31,11 +36,12 @@ def connectivityTest(g):
 ## Connected component computing
 def sameConnectedComponent(g, u, v):
     """ Check if two vertices belong to the same connected component.
-        Use a dfs from u and stop if v is visited along the way
+        Use a dfs from u and stop if v is visited along the way.
         
         Args:
-            g: adjacency list, (u,v): int
-
+            g: adjacency list of an unweighted graph,
+            (u,v): int
+        
         Returns:
             Boolean
     """
