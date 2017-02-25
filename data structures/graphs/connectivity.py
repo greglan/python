@@ -27,3 +27,31 @@ def connectivityTest(g):
                 Q.append(u)
     
     return len(V)==len(g)
+
+## Connected component computing
+def sameConnectedComponent(g, u, v):
+    """ Check if two vertices belong to the same connected component.
+        Use a dfs from u and stop if v is visited along the way
+        
+        Args:
+            g: adjacency list, (u,v): int
+
+        Returns:
+            Boolean
+    """
+    
+    V = []                                                                      # List of visited vertices
+    Q = []                                                                      # Stack
+    Q.append(u)
+    
+    while Q != []:
+        i = Q.pop()
+        if i not in V:
+            if i==v:
+                return True
+            else:
+                V.append(i)
+                for j in g[i]:
+                    Q.append(j)
+    return False
+    
