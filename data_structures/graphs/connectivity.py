@@ -60,4 +60,29 @@ def sameConnectedComponent(g, u, v):
                 for j in g[i]:
                     Q.append(j)
     return False
+
+def getConnectedComponentVertices(g, s):
+    """
+        Returns the list of vertices in the same connected component of s.
+        Use a dfs and return all the visited vertices.
+        
+        Args:
+            g: adjacency list of an unweighted graph,
+            s: vertex (int)
+        
+        Returns:
+            list of int
+    """
+    V = []                                                                      # List of visited vertices
+    Q = []
+    Q.append(s)                                                                 # Stack
     
+    while not Q == []:
+        v = Q.pop()
+        
+        if v not in V:
+            V.append(v)
+            
+            for u in g[v]:
+                Q.append(u)
+    return V
