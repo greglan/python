@@ -3,8 +3,8 @@
 
 ## Connectivity
 # TODO: https://fr.wikipedia.org/wiki/Algorithmes_de_connexit%C3%A9_bas%C3%A9s_sur_des_pointeurs
-# TODO: calcul de composantes connexes
-# TODO: tests de connexité
+# TODO: Duplicate functions for weighted graphs
+
 
 ## Connectivity test
 def connectivityTest(g):
