@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 
-def naive(txt: str, w: str) -> list:
+def naive(t: str, w: str) -> list:
     """
     Naive method for string searching.
-    :param txt: text to search the word in.
+    :param t: text to search the word in.
     :param w: word to be searched.
     :return: list of start indexes.
     """
-    n = len(txt)
+    n = len(t)
     m = len(w)
     indexes = []
 
@@ -20,10 +20,20 @@ def naive(txt: str, w: str) -> list:
             i = 0
             d += 1
 
-        if txt[d + i] == w[i]:
+        if t[d + i] == w[i]:
             i += 1
         else:
             i = 0
             d += 1
 
     return indexes
+
+
+def hash(w):
+    m = len(w)
+    h = 0
+
+    for i in range(m):
+        h += ord(w[i]) * 2**(m-1-i)
+    return h % q
+

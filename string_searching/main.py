@@ -6,4 +6,4 @@ from algorithm import *
 txt = "La complexité de la recherche d’un mot dans un texte est très dépendante du mot, du texte et de l’alphabet."
 w = "mot"
 
-print( naive(txt, w) )
+print( hash('test') )
