@@ -1,2 +1,2 @@
 # scripts_python
-Collection of small scripts
+Collection of small scripts.

@@ -1,84 +1,78 @@
+# -*- coding: utf-8 -*-
+# !/usr/bin/env python
+
+# Not tested
+#  TODO: add tests
+#  TODO: comment
+#  TODO: finish delete func and test
+
 class binarySearchTree:
-    def __init__(this, data=None):
-        this.data = data
-        this.lChild = None
-        this.rChild = None
-    
-    def isLeaf(this):
-        return this.lChild == None and this.rChild == None
-    
-    def insert(this, data):
-        if this.isLeaf():
-            if data < this.data:
-                this.lChild = binarySearchTree(data)
+    def __init__(self, data=None):
+        self.data = data
+        self.lChild = None
+        self.rChild = None
+
+    def isLeaf(self):
+        return (self.lChild is None) and (self.rChild is None)
+
+    def insert(self, data):
+        """
+        Insert the given data in the tree. Recursive method.
+        :param data: 
+        :return: 
+        """
+        if self.isLeaf():
+            if data < self.data:
+                self.lChild = binarySearchTree(data)
             else:
-                this.rChild = binarySearchTree(data)
+                self.rChild = binarySearchTree(data)
         else:
-            if data < this.data:
-                if this.lChild != None:
-                    this.lChild.insert(data)
+            if data < self.data:
+                if self.lChild is not None:
+                    self.lChild.insert(data)
                 else:
-                    this.lChild = binarySearchTree(data)
+                    self.lChild = binarySearchTree(data)
             else:
-                if this.rChild != None:
-                    this.rChild.insert(data)
+                if self.rChild is not None:
+                    self.rChild.insert(data)
                 else:
-                    this.rChild = binarySearchTree(data)
-    
-    def search(this, data):
-        if this.isLeaf():
+                    self.rChild = binarySearchTree(data)
+
+    def search(self, data):
+        if self.isLeaf():
             return None
         else:
-            if data < this.data:
-                if this.lChild == None:
+            if data < self.data:
+                if self.lChild is None:
                     return None
                 else:
-                    return this.lChild.search(data)
-            elif this.data < data:
-                if this.rChild == None:
+                    return self.lChild.search(data)
+            elif self.data < data:
+                if self.rChild is None:
                     return None
                 else:
-                    return this.rChild.search(data)
+                    return self.rChild.search(data)
             else:
                 return data
-    
-    def getMin(this):
-        if this.isLeaf():
-            return this.data
-        else:
-            if this.lChild == None:
-                return this.data
-            else:
-                return this.lChild.getMin()
-    
-    def getMax(this):
-        if this.isLeaf():
-            return this.data
-        else:
-            if this.rChild == None:
-                return this.data
-            else:
-                return this.rChild.getMax()
-    
-    def delete(this, data):
-        minChild = this.getMin(this.rChild)
-        
-        this.rChild.delete(minChild)
-            
 
-def test():
-    global t
-    t = binarySearchTree(3)
-    print( t.isLeaf() )
-    
-    t.insert(0)
-    t.insert(4)
-    t.insert(6)
-    t.insert(2)
-    t.insert(1)
-    
-    print(t.search(3))
-    print(t.search(5))
-    
-    print(t.getMax())
-    print(t.getMin())
+    def getMin(self):
+        if self.isLeaf():
+            return self.data
+        else:
+            if self.lChild is None:
+                return self.data
+            else:
+                return self.lChild.getMin()
+
+    def getMax(self):
+        if self.isLeaf():
+            return self.data
+        else:
+            if self.rChild is None:
+                return self.data
+            else:
+                return self.rChild.getMax()
+
+    def delete(self, data):
+        min_child = self.getMin(self.rChild)
+        self.rChild.delete(min_child)

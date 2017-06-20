@@ -2,14 +2,15 @@
 # !/usr/bin/env python
 
 
-import queue
 
-## Shortest paths
+# Shortest paths
 # Floyd Warshall: distances to self is wrong (2 or 4?)
 # Add comments
 
-## Unweighted graphs
-def distancesFrom(g, s):
+import queue
+
+# Unweighted graphs
+def distances_from(g, s):
     """ 
         Returns the list of distances using a bfs.
     
@@ -35,7 +36,7 @@ def distancesFrom(g, s):
             D[u] = d
     return D
 
-def pathFrom(g, s):
+def path_from(g, s):
     """
         Returns the path to go to a vertex using a bfs
         
@@ -61,11 +62,12 @@ def pathFrom(g, s):
             P[u] = p+[u]
     return P
 
-## Weighted graphs: Bellman-Ford
-def bellmanFord(g, s):
+# Weighted graphs: Bellman-Ford
+def bellman_ford(g, s):
     n = len(g)
     
     for i in range(n):
+        pass
         
 
 ## Weighted graphs: Dijkstra
@@ -112,7 +114,7 @@ def dijkstra(g, source):
 
 
 
-def floydWarshall(g):
+def floyd_warshall(g):
     """ Floyd Warshall's algorithm. """
     global infinity
     order = g.getOrder()
