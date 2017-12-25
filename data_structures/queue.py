@@ -105,7 +105,6 @@ class priorityQueue_searched():
             return self.data.pop(0)
 
 
-
 from heapq import heappush, heappop
 class priorityQueue_heapq():
     def __init__(self):
@@ -122,8 +121,6 @@ class priorityQueue_heapq():
             return heappop(self.data)
         else:
             raise Exception("Empty queue")
-            
-            
 
 
 class priorityQueue_binaryHeap(list):

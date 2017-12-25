@@ -2,17 +2,17 @@
 #!/usr/bin/env python
 
 """
-    Sort the lines of the file.
+    Remove duplicate lines in a file and sort them
 """
 
 import os
-
 os.chdir('/home/alan/Documents/Culture/Langues')
 f = open('e.txt', 'r+')
 
 lines = []
 for line in f:
-    lines.append(line)
+    if not line in lines:
+        lines.append(line)
 lines.sort()
 
 f.seek(0)
