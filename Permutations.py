@@ -1,6 +1,7 @@
 # X 2011
 # Permutations: de 0 à n
 
+
 def estPermutation(t):
     n = len(t)
     occurences = [0 for k in range(n)]

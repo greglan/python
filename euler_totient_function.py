@@ -1,3 +1,11 @@
+# -*- coding: utf-8 -*-
+# !/usr/bin/env python
+
+"""
+    Plot Euler's totient function
+"""
+
+
 import matplotlib.pyplot as plt
 
 
@@ -18,10 +26,11 @@ def phi(n):
     return i
 
 
-N = 3000
+N = 1000
+step = 2
 
-x = [k for k in range(N)]
-y = [phi(k) for k in range(N)]
+x = [k for k in range(0, N, step)]
+y = [phi(k) for k in x]
 
 plt.xlabel(r'$n$')
 plt.ylabel(r"$\varphi(n)$")

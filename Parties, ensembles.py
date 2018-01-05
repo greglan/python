@@ -4,7 +4,8 @@ def card(p):
         n += 1
     return n
 
-def delta(p,q):
+
+def delta(p, q):
     if p == []:
         return q
     if q == []:
@@ -14,7 +15,7 @@ def delta(p,q):
     b = q[0]
 
     if a == b:
-        return (p[1:],q[1:])
+        return (p[1:], q[1:])
 
     if a < b:
         return [a] + delta(p[1:], q)
@@ -22,9 +23,11 @@ def delta(p,q):
     if b < a:
         return [b] + delta(p, q[1:])
 
-def delta(p,q):
+
+def delta(p, q):
     r = []
-    n = len(p); m = len(q)
+    n = len(p);
+    m = len(q)
     ind1, ind2 = 0, 0
 
     while ind1 < n and ind2 < m:
@@ -47,5 +50,6 @@ def delta(p,q):
 
     return r
 
-def test(p,q):
-    return delta(p,q)
+
+def test(p, q):
+    return delta(p, q)

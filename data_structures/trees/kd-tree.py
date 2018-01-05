@@ -1,50 +1,51 @@
 # -*- coding: utf-8 -*-
 # !/usr/bin/env python
 
-class kd_tree:
-    def __init__(this, points):
-        this.dimension = len(points[0])
-        this.root = kd_tree_node(points[0], this.dimension, 0)
+
+class KDTree:
+    def __init__(self, points):
+        self.dimension = len(points[0])
+        self.root = KDTreeNode(points[0], self.dimension, 0)
 
         for point in points[1:]:
-            this.root.insert(point)
+            self.root.insert(point)
 
-    def insert(this, element):
-        this.root.insert(element)
+    def insert(self, element):
+        self.root.insert(element)
 
-    def delete(this):
+    def delete(self):
         pass
 
-    def __str__(this):
-        return this.root.__str__()
+    def __str__(self):
+        return self.root.__str__()
 
 
-class kd_tree_node:
-    def __init__(this, x, dimension, dimension_index):
-        this.root = x
-        this.dimension = dimension
-        this.dimension_index = dimension_index
-        this.lChild = None
-        this.rChild = None
+class KDTreeNode:
+    def __init__(self, x, dimension, dimension_index):
+        self.root = x
+        self.dimension = dimension
+        self.dimension_index = dimension_index
+        self.lChild = None
+        self.rChild = None
 
-    def insert(this, u):
-        if u[this.dimension_index] < this.root[this.dimension_index]:
-            if this.lChild == None:
-                this.lChild = kd_tree_node(u, this.dimension, (this.dimension_index+1)%this.dimension)
+    def insert(self, u):
+        if u[self.dimension_index] < self.root[self.dimension_index]:
+            if self.lChild is None:
+                self.lChild = KDTreeNode(u, self.dimension, (self.dimension_index + 1) % self.dimension)
             else:
-                this.lChild.insert(u)
+                self.lChild.insert(u)
         else:
-            if this.rChild == None:
-                this.rChild = kd_tree_node(u, this.dimension, (this.dimension_index+1)%this.dimension)
+            if self.rChild is None:
+                self.rChild = KDTreeNode(u, self.dimension, (self.dimension_index + 1) % self.dimension)
             else:
-                this.rChild.insert(u)
+                self.rChild.insert(u)
 
-    def __str__(this):
-        return str(this.root)+'\n'+this.lChild.__str__()+'\n'+this.rChild.__str__()
+    def __str__(self):
+        return str(self.root) + '\n' + self.lChild.__str__() + '\n' + self.rChild.__str__()
 
 
 def test():
-    t_2D = kd_tree([(2,3), (5,4), (9,6), (4,7), (8,1), (7,2)])
+    t_2D = KDTree([(2,3), (5,4), (9,6), (4,7), (8,1), (7,2)])
     # t_2D.insert((0,0))
     print(t_2D)
 
