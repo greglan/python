@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+
 def naive(t: str, w: str) -> list:
     """
     Naive method for string searching.
@@ -29,7 +30,7 @@ def naive(t: str, w: str) -> list:
     return indexes
 
 
-def hash(w):
+def hash(w):  # TODO: finish
     m = len(w)
     h = 0
 
@@ -37,3 +38,5 @@ def hash(w):
         h += ord(w[i]) * 2**(m-1-i)
     return h % q
 
+# TODO: add other algorithm
+# TODO: change filename if needed (one per algorithm)

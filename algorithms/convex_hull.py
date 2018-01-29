@@ -24,6 +24,7 @@ def min_point(tab,n):
     
     return i
 
+
 def orient(tab, i, j, k):
     a = tab[0][j]-tab[0][i]
     b = tab[1][j]-tab[1][i]
@@ -40,6 +41,7 @@ def orient(tab, i, j, k):
     else:
         return -1
 
+
 # Next point, assuming the current one is i
 def nextPoint(t,n,i):
     if i==0:
@@ -52,6 +54,7 @@ def nextPoint(t,n,i):
             k = j
     return k
 
+
 def Jarvis_march(points):
     n = len(points[0])
     l = [min_point(points,n)]
@@ -62,6 +65,7 @@ def Jarvis_march(points):
         j = nextPoint(points,n,l[-1])
     
     return l
+
 
 def draw(points):
     # Draw cloud

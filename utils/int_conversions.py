@@ -1,8 +1,10 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 """
 The goal of this file is to implement useful conversion for integers.
 The functionalities are very close to Windows' calculator program
 """
-
 from math import floor
 
 

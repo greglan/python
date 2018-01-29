@@ -1,4 +1,12 @@
+# -*- coding: utf-8 -*-
+"""
+This file is used to help do some quick physics calculus
+"""
+
 from math import log, cos, sin, pi
+
+
+c = 3 * 10 ** 8
 
 
 def deg_to_rad(d):
@@ -31,6 +39,3 @@ def dBm_to_int(x):
 
 def doppler(f, v, c):
     return abs(f - f / (1 - v / c))
-
-
-c = 3 * 10 ** 8

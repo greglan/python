@@ -1,13 +1,17 @@
-# -*- coding: utf-8 -*-
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 """
-    Remove duplicate lines in a file and sort them
+Remove duplicate lines in a file and sort them
 """
+import sys
 
-import os
-os.chdir('/home/alan/Documents/Culture/Langues')
-f = open('e.txt', 'r+')
+path = '/home/alan/Documents/Culture/Langues/e.txt'
+
+if len(sys.argv) > 1:
+    path = sys.argv[1]
+
+f = open(path, 'r+')
 
 lines = []
 for line in f:

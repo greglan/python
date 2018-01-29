@@ -1,14 +1,17 @@
-# -*- coding: utf-8 -*-
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 """
-    Sort the lines of the file.
+Sort the lines of the file.
 """
+import sys
 
-import os
+path = '/home/alan/Documents/Culture/Langues/e.txt'
 
-os.chdir('/home/alan/Documents/Culture/Langues')
-f = open('e.txt', 'r+')
+if len(sys.argv) > 1:
+    path = sys.argv[1]
+
+f = open(path, 'r+')
 
 lines = []
 for line in f:
