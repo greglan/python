@@ -1,78 +1,82 @@
-# -*- coding: utf-8 -*-
 # !/usr/bin/env python
+# -*- coding: utf-8 -*-
 
-# Not tested
-#  TODO: add tests
-#  TODO: comment
-#  TODO: finish delete func and test
 
-class binarySearchTree:
+class BinarySearchTree:
+    """
+    """
     def __init__(self, data=None):
         self.data = data
-        self.lChild = None
-        self.rChild = None
+        self.left_child = None
+        self.right_child = None
 
-    def isLeaf(self):
-        return (self.lChild is None) and (self.rChild is None)
+    def is_leaf(self):
+        """
+        Indicates whether or not the current tree is a leaf.
+        :return: bool
+        """
+        return (self.left_child is None) and (self.right_child is None) and (self.data is not None)
+
+    def search(self, data):
+        if self.is_leaf() and self.data == data:
+            return data
+        else:
+            if data < self.data:
+                if self.left_child is None:
+                    return None
+                else:
+                    return self.left_child.search(data)
+            elif self.data < data:
+                if self.right_child is None:
+                    return None
+                else:
+                    return self.right_child.search(data)
+            else:
+                return data
 
     def insert(self, data):
         """
         Insert the given data in the tree. Recursive method.
-        :param data: 
-        :return: 
+        :return: None
         """
-        if self.isLeaf():
-            if data < self.data:
-                self.lChild = binarySearchTree(data)
-            else:
-                self.rChild = binarySearchTree(data)
+        if self.data is None:
+            self.data = data
         else:
-            if data < self.data:
-                if self.lChild is not None:
-                    self.lChild.insert(data)
+            if self.is_leaf():
+                if data < self.data:
+                    self.left_child = BinarySearchTree(data)
                 else:
-                    self.lChild = binarySearchTree(data)
+                    self.right_child = BinarySearchTree(data)
             else:
-                if self.rChild is not None:
-                    self.rChild.insert(data)
+                if data < self.data:
+                    if self.left_child is not None:
+                        self.left_child.insert(data)
+                    else:
+                        self.left_child = BinarySearchTree(data)
                 else:
-                    self.rChild = binarySearchTree(data)
+                    if self.right_child is not None:
+                        self.right_child.insert(data)
+                    else:
+                        self.right_child = BinarySearchTree(data)
 
-    def search(self, data):
-        if self.isLeaf():
-            return None
-        else:
-            if data < self.data:
-                if self.lChild is None:
-                    return None
-                else:
-                    return self.lChild.search(data)
-            elif self.data < data:
-                if self.rChild is None:
-                    return None
-                else:
-                    return self.rChild.search(data)
-            else:
-                return data
-
-    def getMin(self):
-        if self.isLeaf():
+    def get_min(self):
+        if self.is_leaf():
             return self.data
         else:
-            if self.lChild is None:
+            if self.left_child is None:
                 return self.data
             else:
-                return self.lChild.getMin()
+                return self.left_child.get_min()
 
-    def getMax(self):
-        if self.isLeaf():
+    def get_max(self):
+        if self.is_leaf():
             return self.data
         else:
-            if self.rChild is None:
+            if self.right_child is None:
                 return self.data
             else:
-                return self.rChild.getMax()
+                return self.right_child.get_max()
 
     def delete(self, data):
-        min_child = self.getMin(self.rChild)
-        self.rChild.delete(min_child)
+        min_child = self.get_min(self.right_child)
+        self.right_child.delete(min_child)

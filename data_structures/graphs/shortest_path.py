@@ -2,41 +2,48 @@
 # !/usr/bin/env python
 
 
+"""
+This file implements various algorithms to resolve the shortest path problem in graphs
+"""
+# FIXME: Floyd Warshall: distances to self is wrong (2 or 4?)
+# TODO: Add comments
+# FIXME: use a generic queue lib
+# TODO: add tests
 
-# Shortest paths
-# Floyd Warshall: distances to self is wrong (2 or 4?)
-# Add comments
 
-import queue
-
-# Unweighted graphs
 def distances_from(g, s):
-    """ 
-        Returns the list of distances using a bfs.
-    
-        Input:
-            Graph as an adjacency list
-        
-        Returns:
-            A list l such as l[i] is the distance from s to i
+    """
+    Returns the list of distances from vertex s using a bfs.
+    :type g: list(list(int))
+    :type s: int
+    :param g: unweighted graph as an adjacency list
+    :param s: vertex to start from
+    :return: A list distances such as distances[i] is the distance from s to vertex i
     """
     
-    V = []                                                                      # List of visited vertices
-    D = [0 for k in range(len(g))]                                              # Distances
-    Q = queue.Queue()
-    Q.put((s,0))
+    visited_vertices = []                   # List of visited vertices
+    distances = [0 for k in range(len(g))]  # Distances
+    queue = Queue()
+    queue.put((s, 0))
     
-    while not Q.empty():
-        u, d = Q.get()
+    while not queue.empty():
+        current_vertex, current_distance = queue.get()
         
-        if u not in V:
-            V += [u]
-            for v in g[u]:
-                Q.put( (v,d+1) )
-            D[u] = d
-    return D
+        if current_vertex not in visited_vertices:
+            visited_vertices += [current_vertex]
+            for v in g[current_vertex]:
+                queue.put((v, current_distance+1))
+            distances[current_vertex] = current_distance
+    return distances
+
 
 def path_from(g, s):
+    """
+
+    :param g:
+    :param s:
+    :return:
+    """
     """
         Returns the path to go to a vertex using a bfs
         
@@ -72,7 +79,7 @@ def bellman_ford(g, s):
 
 ## Weighted graphs: Dijkstra
 ## Weighted graphs: Floyd Warshall
-## Waighted graphs: A star
+## Weighted graphs: A star
 def dijkstra(g, source):
     """
     Returns the list of distances and the list of paths
@@ -140,6 +147,3 @@ def floyd_warshall(g):
                     nextVertex[i][j] = nextVertex[i][k]
     
     return distances, nextVertex
-
-
-## Tests
