@@ -34,6 +34,31 @@ def is_prime(n):
         return True
 
 
+def primes(a, b):
+    r = b % a
+    while r != 0:
+        b = a
+        a = r
+        r = b % a
+    return a == 1
+
+
+def primes_2(p,q):
+    if p > q:
+        return p/q != p//q
+    else:
+        return primes(q,p)
+
+
+def phi(n):
+    """ Euler's totient function """
+    i = 1
+    for k in range(2, n):
+        if primes(k, n):
+            i += 1
+    return i
+    
+
 def is_perfect(n):
     return sum(divisors_list(n)) - n == n
 

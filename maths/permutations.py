@@ -8,13 +8,18 @@ class Permutation():
         self.data = l
 
     def check(self):
+        """
+        Check if the current data represents a permutation
+        :return: boolean
+        """
         n = len(self.data)
-        occurences = [0 for k in range(n)]
+        occurences = []
         i = 0
         try:
             while i < n:
-                occurences[self.data[i]] += 1
-                if occurences[self.data[i]] > 1:
+                if self.data[i] not in occurences:
+                    occurences.append(self.data[i])
+                else:
                     return False
                 i += 1
 

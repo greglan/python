@@ -4,3 +4,7 @@ The following conventions are used:
 - _n_ is the length of _y_.
 - _m_ is the length of _x_.
 - _k_ is the size of the alphabet.
+
+# TODO
+* Check that everything works.
+* Add new algorithms
