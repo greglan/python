@@ -5,7 +5,11 @@ from random import randint
 
 def swap(l, i, j):
     """
-        Swap elements at indexes i and j
+    Swap elements at indexes i and j in list
+    :type l: list
+    :type i: int
+    :type j: int
+    :return: None
     """
     l[i], l[j] = l[j], l[i]
 
@@ -18,13 +22,12 @@ def randomize(l):
 
 
 class Complexity(object):
-    def __init__(this):
-        this.comparisons = 0
-        this.swaps = 0
-        this.assignements = 0
+    def __init__(self):
+        self.comparisons = 0
+        self.assignments = 0
 
-    def increase_comparisons(this, i=1):
-        this.comparisons += i
+    def increase_comparisons(self, i=1):
+        self.comparisons += i
 
-    def increase_assignements(this, i=1):
-        this.assignements += i
+    def increase_assignments(self, i=1):
+        self.assignments += i

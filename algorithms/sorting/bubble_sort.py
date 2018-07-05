@@ -2,7 +2,8 @@
 
 #TODO: Sort with i in range(N)
 
-from utils import *
+from .utils import *
+
 
 def bubble_sort(t):
     C = Complexity()
@@ -15,7 +16,7 @@ def bubble_sort(t):
             C.increase_comparisons()
             #if t[j-1] > t[j]:
             if t[j] > t[j+1]:
-                C.increase_assignements(2)
+                C.increase_assignments(2)
                 #swap(t, j-1, j)
                 swap(t, j, j+1)
     return t, C

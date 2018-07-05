@@ -71,19 +71,34 @@ def get_next_point(points, n_points, current_point):
     for point in range(n_points):
         if point != current_point and orient(points, current_point, point, next_point_index) > 0:
             next_point_index = point
+
     return next_point_index
 
 
 def jarvis_march(points):
+    """
+    Returns the convex hull of the given set of point
+
+    :param points:
+    :return: ordered list of the indexes of the point
+    """
     n_points = len(points[0])
-    convex_hull_points = [min_point(points, n_points)]
-    next_point = get_next_point(points, n_points, convex_hull_points[0])
+    convex_hull_indexes = [min_point(points, n_points)]
+    next_point = get_next_point(points, n_points, convex_hull_indexes[0])
 
-    while next_point != convex_hull_points[0]:
-        convex_hull_points.append(next_point)
-        next_point = get_next_point(points, n_points, convex_hull_points[-1])
+    while next_point != convex_hull_indexes[0]:
+        convex_hull_indexes.append(next_point)
+        next_point = get_next_point(points, n_points, convex_hull_indexes[-1])
 
-    return convex_hull_points
+    # Convert the convex hull to coordinates
+    convex_hull_x = []
+    convex_hull_y = []
+
+    for point in convex_hull_indexes:
+        convex_hull_x.append(points[0][point])
+        convex_hull_y.append(points[1][point])
+
+    return convex_hull_x, convex_hull_y
 
 
 def show_points(x, y):
@@ -124,21 +139,11 @@ RANGE = 10
 points = random_points(N_POINTS, RANGE, RANGE)
 show_points(points[0], points[1])
 
-convex_hull = jarvis_march(points)
-x = []
-y = []
+convex_hull_x, convex_hull_y = jarvis_march(points)
+n = len(convex_hull_x)
 
-for i in convex_hull:
-    x.append(points[0][i])
-    y.append(points[1][i])
-
-n = len(convex_hull)
+# Plot the convex hull
 for i in range(n - 1):
-    plt.plot([x[i], x[i + 1]], [y[i], y[i + 1]], color='black', linestyle='dashed')
-
-print("Points list:", points)
-print("Convex hull:", convex_hull)
-
-# First and last points
-plt.plot([x[-1], x[0]], [y[-1], y[0]], color='black', linestyle='dashed')
+    plt.plot([convex_hull_x[i], convex_hull_x[i + 1]], [convex_hull_y[i], convex_hull_y[i + 1]], linestyle='dashed')
+plt.plot([convex_hull_x[-1], convex_hull_x[0]], [convex_hull_y[-1], convex_hull_y[0]], linestyle='dashed')
 plt.show()
