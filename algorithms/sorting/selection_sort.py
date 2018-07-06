@@ -1,17 +1,17 @@
 # -*- coding: utf-8 -*-
 
 
-from .utils import *
+from algorithms.sorting.utils import *
 
 
 def selection_sort(t):
     C = Complexity()
-    N = len(t)
+    n = len(t)
     
-    for i in range(N):
+    for i in range(n):
         C.increase_assignments()
         min_index = i
-        for j in range(i+1, N):
+        for j in range(i+1, n):
             C.increase_comparisons()
             if t[j] < t[min_index]:
                 C.increase_assignments()

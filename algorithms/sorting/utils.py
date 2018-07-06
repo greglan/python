@@ -15,19 +15,25 @@ def swap(l, i, j):
 
 
 def randomize(l):
-    N = len(l) - 1
-    for i in range(N ** 2):
-        swap(l, randint(0, N), randint(0, N))
+    n = len(l) - 1
+    for i in range(n ** 2):
+        swap(l, randint(0, n), randint(0, n))
     return l
 
 
 class Complexity(object):
     def __init__(self):
-        self.comparisons = 0
         self.assignments = 0
-
-    def increase_comparisons(self, i=1):
-        self.comparisons += i
+        self.comparisons = 0
+        self.operations = 0
 
     def increase_assignments(self, i=1):
         self.assignments += i
+        self.operations += i
+
+    def increase_comparisons(self, i=1):
+        self.comparisons += i
+        self.operations += i
+
+    def increase_operations(self, i=1):
+        self.operations += i
