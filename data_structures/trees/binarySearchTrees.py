@@ -78,5 +78,6 @@ class BinarySearchTree:
                 return self.right_child.get_max()
 
     def delete(self, data):
+        # TODO
         min_child = self.get_min(self.right_child)
         self.right_child.delete(min_child)

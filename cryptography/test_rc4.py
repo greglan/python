@@ -27,7 +27,6 @@ class TestRc4(TestCase):
             keystream = prga(S, len(self.keystreams[key]))
             self.assertEqual(keystream, self.keystreams[keystream])
 
-
     def test_rc4(self):
         # TODO
         self.fail()

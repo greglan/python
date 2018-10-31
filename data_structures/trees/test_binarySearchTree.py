@@ -7,8 +7,7 @@ class TestBinarySearchTree(TestCase):
     def setUp(self):
         t0 = BinarySearchTree()
 
-        t1 = BinarySearchTree()
-        t1.insert(5)
+        t1 = BinarySearchTree(5)
 
         t2 = BinarySearchTree(5)
 
