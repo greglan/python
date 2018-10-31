@@ -1,12 +1,8 @@
 class MinHeap:
     """
-        Binary heap.
-        Root index starts at 1.
-        Childs are at indexes 2i and 2i+1
-        Parent is at index floor((i-1)/2)
-
-        Todo:
-            Comments
+    Root index starts at 1.
+    Children are at indexes 2i and 2i+1
+    Parent is at index floor((i-1)/2)
     """
 
     def __init__(self):
@@ -26,6 +22,7 @@ class MinHeap:
         self.data[j], self.data[i] = self.data[i], self.data[j]
 
     def __get_min_child_index(self, i):
+        # FIXME: comment and understand
         if 2 * i > self.size:
             return i
         elif 2 * i + 1 > self.size:
