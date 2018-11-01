@@ -35,13 +35,13 @@ class TestBinarySearchTree(TestCase):
         self.assertEqual(self.trees[3].search(10), None)
 
     def test_insert(self):
-        self.assertTrue(True)
+        self.fail()
 
     def test_get_min(self):
-        self.assertTrue(True)
+        self.fail()
 
     def test_get_max(self):
-        self.assertTrue(True)
+        self.fail()
 
     def test_delete(self):
-        self.assertTrue(True)
+        self.fail()

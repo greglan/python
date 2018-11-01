@@ -1,96 +1,89 @@
 # -*- coding: utf-8 -*-
 # !/usr/bin/env python
-
-# Searches
-# TODO: Recursive bfs?
-# TODO: Add comments
-# TODO: Add tests
-
 import queue
 
 
-# BFS
 def bfs_list(g, s):
     """
     Breadth First Search algorithm for adjacency lists.
     
     :param g: the graph to visit. It is assumed the list only contains int data type. 
-    :param s: the vertex to start from. This is an integer 
-    :return: (v,d,p), where v is the order in which the vertex where visited, 
-    d is the distance of each vertex to the start, p is the list of the predecessors 
+    :type g: list(list)
+    :param s: the vertex to start from.
+    :type s: int
+    :return: (V,D,P), where v is the list of visited vertices in order,
+    d is the list of the distance of each vertex from the start and
+    p is the list of the predecessors of each vertex
     """
 
     # This list contains the distances from the start vertex.
-    d = [float('inf') for k in range(len(g))]
-    d[s] = 0
+    distances = [float('inf') for k in range(len(g))]
+    distances[s] = 0
 
     # This list contains the predecessor of each vertex.
-    p = [-1 for k in range(len(g))]
+    predecessors = [-1 for k in range(len(g))]
 
+    # Queue of vertices to visit
     q = queue.Queue()
-    q.put(s)
-    s = []  # List of visited vertices.
+    q.put(s)  # Start with the vertex given as argument
+    visited_vertices = []  # List of visited vertices.
 
     while not q.empty():
-        v = q.get()
+        v = q.get()  # Vertex being visited
 
         for u in g[v]:
-            if u not in s:
-                d[u] = d[v] + 1
-                p[u] = v
+            if u not in visited_vertices:
+                distances[u] = distances[v] + 1  # Update the distance
+                predecessors[u] = v  # Update the predecessor
                 q.put(u)
-        s.append(v)
+        visited_vertices.append(v)
 
-    return s[:-1], d, p
+    return visited_vertices, distances, predecessors
 
 
-# DFS
-def dfsRec_list(g, s):
+def dfs_rec_list(g, s):
     """
     Recursive Depth First Search for adjacency lists
-    
-    Returns:
-        None
+
+    :param g: the graph to visit. It is assumed the list only contains int data type.
+    :type g: list(list)
+    :param s: the vertex to start from.
+    :type s: int
+    :return: list of visited vertices
     """
     
     def visit(v):
-        print(v)
-        V.append(v)
+        visited_vertices.append(v)
         for u in g[v]:
-            if u not in V:
+            if u not in visited_vertices:
                 visit(u)
     
-    V = []                                                                      # List of visited vertices
+    visited_vertices = []
     visit(s)
+    return visited_vertices
 
 
-def dfsImp_list(g, s):
+def dfs_imp_list(g, s):
     """
-     Imperative Depth First Search for adjacency list
+    Imperative Depth First Search for adjacency list
     
-    Returns:
-        None
+    :param g: the graph to visit. It is assumed the list only contains int data type.
+    :type g: list(list)
+    :param s: the vertex to start from.
+    :type s: int
+    :return: list of visited vertices
     """
-    V = []                                                                      # List of visited vertices
-    Q = []
-    Q.append(s)                                                                 # Stack
+    visited_vertices = []
+    stack = []
+    stack.append(s)
     
-    while not Q == []:
-        v = Q.pop()
+    while not stack == []:
+        v = stack.pop()
         
-        if v not in V:
-            print(v)
-            V.append(v)
+        if v not in visited_vertices:
+            visited_vertices.append(v)
             
             for u in g[v]:
-                Q.append(u)
+                stack.append(u)
 
-
-import igraph
-
-g1 = igraph.Graph()
-g1.add_vertices(5)
-g1.add_edges([(0,1), (0,2), (0,3), (0,4), (3, 4)])
-print(g1.bfs(4)[0])
-print(bfs_list(g1.get_adjlist(), 4))
-
+    return visited_vertices

@@ -8,9 +8,13 @@ import operator
 # TODO: adjList to edges func
 # TODO: Add option to get the minimum or the maximum spanning tree.
 
-## Prim's algorithm
+
 def prim(g):
-    """ Return the minimum spanning tree using Prim's algorithm """
+    """
+    Return the minimum spanning tree using Prim's algorithm
+    :param g:
+    :return:
+    """
     # TODO: Check
     global infinity
     
@@ -55,9 +59,10 @@ def prim(g):
     # Return the tree
     return F
 
-## Krushkal's algorithm
+
 def krushkal(g):
     """
+    Krushkal's algorithm
         Input: a list of edges (v1,v2,w)
         Returns:
             A list of edges

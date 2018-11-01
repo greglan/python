@@ -1,10 +1,5 @@
 # -*- coding: utf-8 -*-
 # !/usr/bin/env python
-
-
-"""
-This file implements various algorithms to resolve the shortest path problem in graphs
-"""
 # FIXME: Floyd Warshall: distances to self is wrong (2 or 4?)
 # TODO: Add comments
 # FIXME: use a generic queue lib
@@ -120,16 +115,18 @@ def dijkstra(g, source):
     return distances, predecessors
 
 
-
 def floyd_warshall(g):
-    """ Floyd Warshall's algorithm. """
+    """
+    Floyd Warshall's algorithm
+    :param g:
+    :return:
+    """
     global infinity
     order = g.getOrder()
 
     # Create the adjacency matrix of the graph
     distances = [ [infinity for j in range(order)] for i in range(order) ]
     nextVertex = [[None for j in range(order)] for i in range(order) ]
-    
 
     # Initialise adjacency matrix and the nextVertex matrix
     for i in range(order):

@@ -1,13 +1,11 @@
 # -*- coding: utf-8 -*-
 # !/usr/bin/env python
 
-## Connectivity
 # TODO: https://fr.wikipedia.org/wiki/Algorithmes_de_connexit%C3%A9_bas%C3%A9s_sur_des_pointeurs
 # TODO: Duplicate functions for weighted graphs
 
 
-## Connectivity test
-def connectivityTest(g):
+def connectivity_test(g):
     """
         Input: A graph as an adjacency list
         Uses an imperative dfs
@@ -18,23 +16,23 @@ def connectivityTest(g):
         Returns:
             Boolean
     """
-    V = []                                                                      # List of visited vertices
+    V = []  # List of visited vertices
     Q = []
-    Q.append(0)                                                                 # Stack
-    
+    Q.append(0)  # Stack
+
     while not Q == []:
         v = Q.pop()
-        
+
         if v not in V:
             V.append(v)
-            
+
             for u in g[v]:
                 Q.append(u)
-    
-    return len(V)==len(g)
 
-## Connected component computing
-def sameConnectedComponent(g, u, v):
+    return len(V) == len(g)
+
+
+def same_connected_component(g, u, v):
     """ Check if two vertices belong to the same connected component.
         Use a dfs from u and stop if v is visited along the way.
         
@@ -45,15 +43,15 @@ def sameConnectedComponent(g, u, v):
         Returns:
             Boolean
     """
-    
-    V = []                                                                      # List of visited vertices
-    Q = []                                                                      # Stack
+
+    V = []  # List of visited vertices
+    Q = []  # Stack
     Q.append(u)
-    
+
     while Q != []:
         i = Q.pop()
         if i not in V:
-            if i==v:
+            if i == v:
                 return True
             else:
                 V.append(i)
@@ -61,7 +59,8 @@ def sameConnectedComponent(g, u, v):
                     Q.append(j)
     return False
 
-def getConnectedComponentVertices(g, s):
+
+def get_connected_component_vertices(g, s):
     """
         Returns the list of vertices in the same connected component of s.
         Use a dfs and return all the visited vertices.
@@ -73,16 +72,16 @@ def getConnectedComponentVertices(g, s):
         Returns:
             list of int
     """
-    V = []                                                                      # List of visited vertices
+    V = []  # List of visited vertices
     Q = []
-    Q.append(s)                                                                 # Stack
-    
+    Q.append(s)  # Stack
+
     while not Q == []:
         v = Q.pop()
-        
+
         if v not in V:
             V.append(v)
-            
+
             for u in g[v]:
                 Q.append(u)
     return V
