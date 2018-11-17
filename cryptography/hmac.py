@@ -1,3 +1,20 @@
+def str_xor(s1, s2):
+    """
+    Return the xor of two strings. It is assumed the two strings have
+    the same length.
+
+    :type s1: str
+    :type s2: str
+    :return: string
+    """
+    r = ""
+
+    for c1, c2 in zip(s1, s2):
+        r += chr(ord(c1) ^ ord(c2))
+
+    return r
+
+
 def hmac(key, m, hash_infos):
     """
     Hash-based message authentication code
@@ -12,17 +29,19 @@ def hmac(key, m, hash_infos):
     """
     hash_func, block_size = hash_infos
 
-    if key > block_size:
+    if len(key) > block_size:
         key = hash_func(key)
 
-    if key < block_size:
+    if len(key) < block_size:
         key = key + '0' * (block_size - len(key))
 
     # Outer padded key
-    opad = key ^ '0x5C' * block_size
-    opad = []
+    opad = str_xor(key, '0x5C' * block_size)
 
     # Inner padded key
-    ipad = key ^ '0x36' * block_size
+    ipad = str_xor(key, '0x36' * block_size)
 
-    return hash_func(key ^ opad + h((key ^ ipad) + m))
+    h1 = str_xor(key, opad)
+    h2 = hash_func(str_xor(key, ipad) + m)
+
+    return hash_func(h1 + h2)
