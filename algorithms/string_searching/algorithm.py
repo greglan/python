@@ -30,7 +30,15 @@ def naive(t: str, w: str) -> list:
     return indexes
 
 
-def hash(w):  # TODO: finish
+def kmb_table():
+    return None
+
+
+def kmp():
+    return None
+
+
+def custom_hash(w):  # TODO: finish
     m = len(w)
     h = 0
 

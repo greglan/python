@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 # !/usr/bin/env python
+from data_structures.graphs.utils import *
 import queue
 
 
@@ -8,16 +9,16 @@ def bfs_list(g, s):
     Breadth First Search algorithm for adjacency lists.
     
     :param g: the graph to visit. It is assumed the list only contains int data type. 
-    :type g: list(list)
+    :type g: list(list(int))
     :param s: the vertex to start from.
     :type s: int
-    :return: (V,D,P), where v is the list of visited vertices in order,
-    d is the list of the distance of each vertex from the start and
-    p is the list of the predecessors of each vertex
+    :return: (V,D,P), where V is the list of visited vertices in order,
+    D is the list of the distance of each vertex from the start and
+    P is the list of the predecessors of each vertex
     """
 
     # This list contains the distances from the start vertex.
-    distances = [float('inf') for k in range(len(g))]
+    distances = [INFINITY for k in range(len(g))]
     distances[s] = 0
 
     # This list contains the predecessor of each vertex.
@@ -46,7 +47,7 @@ def dfs_rec_list(g, s):
     Recursive Depth First Search for adjacency lists
 
     :param g: the graph to visit. It is assumed the list only contains int data type.
-    :type g: list(list)
+    :type g: list(list(int))
     :param s: the vertex to start from.
     :type s: int
     :return: list of visited vertices
@@ -68,7 +69,7 @@ def dfs_imp_list(g, s):
     Imperative Depth First Search for adjacency list
     
     :param g: the graph to visit. It is assumed the list only contains int data type.
-    :type g: list(list)
+    :type g: list(list(int))
     :param s: the vertex to start from.
     :type s: int
     :return: list of visited vertices
