@@ -15,9 +15,9 @@ class TestHmac(TestCase):
         def sha256(m):
             return hashlib.sha256(m.encode("ascii")).hexdigest()
 
-        self.md5 = (md5, 64)
-        self.sha1 = (sha1, 64)
-        self.sha256 = (sha256, 64)
+        self.md5 = (md5, hashlib.md5().block_size)
+        self.sha1 = (sha1, hashlib.sha1().block_size)
+        self.sha256 = (sha256, hashlib.sha256().block_size)
 
     def test_hmac(self):
         # self.assertEqual(
