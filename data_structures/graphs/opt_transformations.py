@@ -27,8 +27,8 @@ def optimization2opt(graph, path, n):
     best_distance = getPathLength(graph, path)
     best_path = path
 
-    for i in range(1,n):
-        for j in range(i,n):
+    for i in range(1, n):
+        for j in range(i, n):
             new_path = swap2opt(path, i, j)
             new_distance = getPathLength(graph, new_path)
             if new_distance < best_distance:
