@@ -21,3 +21,30 @@ def compress(s):
     compressed_str += s[i] + str(j - i)
 
     return compressed_str
+
+
+def compress_inplace(s):
+    """
+    Compress a string by replacing n contiguous characters c by cn.
+    This does not use an auxiliary string
+    :param s: string to compress
+    :type s: str
+    :return: str
+    """
+    n = len(s)
+    k = 0
+    i = 0
+    j = 1
+    compressed_str = ""
+
+    while j < len(s):
+        if s[j] == s[i]:
+            j += 1
+        else:
+            compressed_str += s[i] + str(j-i)
+            i = j
+            j += 1
+
+    compressed_str += s[i] + str(j - i)
+
+    return compressed_str
