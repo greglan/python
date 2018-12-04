@@ -3,6 +3,7 @@
 
 import matplotlib.pyplot as plt
 
+from algorithms.sorting.merge_sort import merge_sort
 from algorithms.sorting.utils import randomize
 from algorithms.sorting.bubble_sort import bubble_sort
 from algorithms.sorting.selection_sort import selection_sort
@@ -52,7 +53,8 @@ SAMPLES = 10  # Number of list to sort for a given length
 algorithms = {
     "bubble_sort": bubble_sort,
     "selection_sort": selection_sort,
-    "insertion_sort": insertion_sort
+    "insertion_sort": insertion_sort,
+    "merge_sort": merge_sort
 }
 
 assignments = {}

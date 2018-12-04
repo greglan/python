@@ -5,41 +5,44 @@ from algorithms.sorting.utils import *
 
 
 def insertion_sort(t):
-    C = Complexity()
+    operations = Complexity()
     n = len(t)
     
     for i in range(n):
-        C.increase_assignments()
+        operations.assignments += 1
         j = i
         
         while j > 0 and t[j] < t[j-1]:
-            C.increase_comparisons(2)
-            C.increase_assignments(2)
+            operations.comparisons += 2
+            operations.assignments += 2
             swap(t, j, j-1)
-            C.increase_assignments()
+            operations.assignments += 1
             j -= 1
 
-        C.increase_comparisons(2)
+        operations.comparisons += 2
         
-    return t, C
+    return t, operations
     
 
 def insertion_sort(t):
-    C = Complexity()
+    operations = Complexity()
     n = len(t)
     
     for i in range(n):
-        C.increase_assignments(2)
+        operations.assignments += 2
+
         k = t[i]
         j = i
         
         while j > 0 and k < t[j-1]:
-            C.increase_comparisons(2)
-            C.increase_assignments(2)
+            operations.comparisons += 2
+            operations.assignments += 2
             t[j] = t[j-1]
             j -= 1
-        C.increase_comparisons(2)
-        
-        C.increase_assignments()
+
+        operations.comparisons += 2
+        operations.assignments += 1
+
         t[j] = k
-    return t, C
+
+    return t, operations

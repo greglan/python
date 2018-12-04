@@ -5,14 +5,15 @@ from algorithms.sorting.utils import *
 
 
 def bubble_sort(t):
-    C = Complexity()
+    operations = Complexity()
     n = len(t)
     
     for i in range(n-1, 0, -1):
         for j in range(0, i):
-            C.increase_comparisons()
+            operations.comparisons += 1
 
             if t[j] > t[j+1]:
-                C.increase_assignments(2)
+                operations.assignments += 2
                 swap(t, j, j+1)
-    return t, C
+    
+    return t, operations

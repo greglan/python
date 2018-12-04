@@ -11,10 +11,10 @@ def merge_sort(unsorted_list):
         return unsorted_list, operations
     else:
         middle = n // 2
-        left, left_operations = merge_sort(unsorted_list[:middle])
-        right, right_operations = merge_sort(unsorted_list[middle:])
+        left, left_ops = merge_sort(unsorted_list[:middle])
+        right, right_ops = merge_sort(unsorted_list[middle:])
 
-        operations.comparisons = left_operations.comparisons + right_operations.comparisons
+        operations.comparisons = left_ops.comparisons + right_ops.comparisons
 
         n = len(left)
         m = len(right)

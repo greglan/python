@@ -20,19 +20,16 @@ tests = [
 
 class TestSort(TestCase):
     def test_bubble_sort(self):
-        pass
         for test in tests:
             result, complexity = bubble_sort(test[0])
             self.assertEqual(test[1], result)
 
     def test_insertion_sort(self):
-        pass
         for test in tests:
             result, complexity = insertion_sort(test[0])
             self.assertEqual(test[1], result)
 
     def test_selection_sort(self):
-        pass
         for test in tests:
             result, complexity = selection_sort(test[0])
             self.assertEqual(test[1], result)
