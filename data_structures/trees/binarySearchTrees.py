@@ -123,7 +123,9 @@ class BinarySearchTree:
         else:
             parent.left_child = None
 
-
+    def list_of_depths(self):
+        # TODO
+        pass
 
 
 

@@ -1,2 +1,1 @@
-# scripts_python
-Collection of small scripts.
+This repo contains many scripts I made to practice Python programming.

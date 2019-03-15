@@ -75,9 +75,8 @@ def dfs_imp_list(g, s):
     :return: list of visited vertices
     """
     visited_vertices = []
-    stack = []
-    stack.append(s)
-    
+    stack = [s]
+
     while not stack == []:
         v = stack.pop()
         
