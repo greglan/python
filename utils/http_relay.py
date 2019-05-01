@@ -11,12 +11,7 @@ cookie = {'PHPSESSID': '',
 r1 = requests.get(IN_URL1, cookies=cookie)
 challenge = r1.content.decode('ascii')
 
-a = 0
-b = 0
-u_0 = 34
-n = 4000
-
-y = u_0 + n/2 * (2*a + b*(n-1))
+y = 0
 
 r3 = requests.get(OUT_URL+str(y), cookies=cookie)
 
