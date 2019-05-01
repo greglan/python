@@ -1,27 +1,62 @@
 """
-Main methods to override:
- - __str__
- - __ne__, __le__, __lt__, __ge__, __gt__
- - __add__, __sub__, __mul__, __div__, __floordiv__ (//), __rmul__ (right multiplication)
+Class examples
 """
 
+
 class A:
-    def __new__(self):  # Called for the creation of the instance
-        self.x = None
-        self.y = None
+    def __new__(clss, *args, **kwargs):
+        """
+        Called for the creation of the instance, so before __init__. Not a static method !
+        :return:
+        """
+        instance = super(A, clss).__new__(clss)
+        return instance
 
-    def __init__(self, a, b):  # Called for initializing an instance
-        self.x = a
-        self.y = b
+    def __init__(self, arg):
+        """
+        Called for initializing an instance
+        """
+        self.arg = arg
 
-class B(A):
+    def whoami(self):
+        print("I am class A")
+
+
+class B(object):
+    def __new__(clss, *args, **kwargs):
+        """
+        Called for the creation of the instance, so before __init__. Not a static method !
+        :return:
+        """
+        instance = super(B, clss).__new__(clss)
+        return instance
+
+    def __init__(self, b):
+
+        self.b = b
+
+    def whoami(self):
+        print("I am class B")
+
+
+class C(A):
     def __init__(self, a, b, c):
-        super(B, self).__init__(a, b)  # Call super method
-        # super().__init__(a, b)  # Python 3 only
+        super(C, self).__init__(0)  # Call super method
+        # super().__init__(arg)  # Python 3 only
         self.c = c
 
+    def whoami(self):
+        print("I am class C")
 
-?B  # Information on the class
+
+class D(A, B):
+    def __init__(self):
+        super().__init__(None)  # __init__ of A called
+
+
 issubclass(A, object)  # Always return True
 type("string")  # Return the type of an object
-isinstance(var, type)  # Check type of an object
+isinstance("string", str)  # Check type of an object
+# ?A  # Information on the class
+
+D().whoami()  # Method of class A because first class specified
