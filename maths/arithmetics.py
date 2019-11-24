@@ -85,29 +85,29 @@ def prime_factors(n):
     return l
 
 
-def pgcd_rec(a, b):
+def gcd_rec(a, b):
     if b == 0:
         return a
     else:
-        return pgcd_rec(b, a % b)
+        return gcd_rec(b, a % b)
 
 
-def pgcd(a, b):
+def gcd(a, b):
     while b > 0:
         a, b = b, a % b
     return a
 
 
-def euclide_extended_rec(a, b):
+def euclid_extended_rec(a, b):
     if b == 0:
         return a, 1, 0
     else:
         q, r = divmod(a, b)
-        d, u, v = euclide_extended_rec(b, r)
+        d, u, v = euclid_extended_rec(b, r)
         return d, v, u - q * v
 
 
-def euclide_extended(a0, b0):  # invariant : a0*u + b0*v = a et a0*x + b0*y = b
+def euclid_extended(a0, b0):  # invariant : a0*u + b0*v = a et a0*x + b0*y = b
     a, u, v, b, x, y = a0, 1, 0, b0, 0, 1
     while b != 0:
         q, r = divmod(a, b)
